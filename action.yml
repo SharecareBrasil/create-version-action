@@ -9,11 +9,9 @@ runs:
   steps:
   - uses: actions/setup-node@v2
     with:
-      cache: semantic-release
+      cache: npm
   - shell: bash
-    run: if [[ -f "yarn.lock" ]] ; then yarn ci ; fi
-  - shell: bash
-    run: if [[ -f "package-lock.json" ]] ; then npm ci ; fi
+    run: npm ci
   - name: Release
     shell: bash
     id: create-release
