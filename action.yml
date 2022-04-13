@@ -9,7 +9,7 @@ runs:
   steps:
   - uses: actions/setup-node@v2
   - shell: bash
-    run: if [[ -f "yarn.lock" ]] ; then yarn ci ; fi
+    run: if [[ -f "yarn.lock" ]] ; then yarn install --frozen-lockfile; fi
   - shell: bash
     run: if [[ -f "package-lock.json" ]] ; then npm ci ; fi
   - name: Release
