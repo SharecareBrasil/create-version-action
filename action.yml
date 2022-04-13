@@ -1,8 +1,8 @@
-name: 'Create version'
+name: 'Create release'
 outputs:
   tag:
-    description: "Version tag"
-    value: ${{ steps.version.outputs.version }}
+    description: "release tag"
+    value: ${{ steps.create-release.outputs.version }}
 
 runs:
   using: "composite"
@@ -15,12 +15,11 @@ runs:
   - shell: bash
     run: if [[ -f "package-lock.json" ]] ; then npm ci ; fi
   - name: Release
-    id: version
+    shell: bash
+    id: create-release
     run: |
       npx semantic-release
       VERSION=$(cat package.json|jq -r .version)
       echo "::set-output name=version::$VERSION"
     env:
       GITHUB_TOKEN: ${{ github.token }}
-    outputs:
-      tag: ${{ steps.version.outputs.version }}
