@@ -1,0 +1,26 @@
+name: 'Create version'
+outputs:
+  tag:
+    description: "Version tag"
+    value: ${{ steps.version.outputs.version }}
+
+runs:
+  using: "composite"
+  steps:
+  - uses: actions/setup-node@v2
+    with:
+      cache: semantic-release
+  - shell: bash
+    run: if [[ -f "yarn.lock" ]] ; then yarn ci ; fi
+  - shell: bash
+    run: if [[ -f "package-lock.json" ]] ; then npm ci ; fi
+  - name: Release
+    id: version
+    run: |
+      npx semantic-release
+      VERSION=$(cat package.json|jq -r .version)
+      echo "::set-output name=version::$VERSION"
+    env:
+      GITHUB_TOKEN: ${{ github.token }}
+    outputs:
+      tag: ${{ steps.version.outputs.version }}
