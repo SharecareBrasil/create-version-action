@@ -8,10 +8,10 @@ runs:
   using: "composite"
   steps:
   - uses: actions/setup-node@v2
-    with:
-      cache: npm
   - shell: bash
-    run: yarn ci
+    run: if [[ -f "yarn.lock" ]] ; then yarn ci ; fi
+  - shell: bash
+    run: if [[ -f "package-lock.json" ]] ; then npm ci ; fi
   - name: Release
     shell: bash
     id: create-release
