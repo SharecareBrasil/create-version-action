@@ -11,7 +11,7 @@ runs:
     with:
       cache: npm
   - shell: bash
-    run: npm ci
+    run: yarn ci
   - name: Release
     shell: bash
     id: create-release
