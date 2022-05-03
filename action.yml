@@ -2,7 +2,7 @@ name: 'Create release'
 outputs:
   tag:
     description: "release tag"
-    value: ${{ steps.create-release.outputs.version }}
+    value: "v${{ steps.create-release.outputs.version }}"
 
 runs:
   using: "composite"
