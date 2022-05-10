@@ -22,7 +22,7 @@ runs:
       yarn add upgrade@^1.1.0
       yarn add @semantic-release/commit-analyzer@^9.0.2
       yarn add commit-analyzer-fail-on-no-release@^1.0.1
-      yarn add conventional-changelog-conventionalcommits@^4.6.3,
+      yarn add conventional-changelog-conventionalcommits@^4.6.3
 
   - name: Release
     shell: bash
