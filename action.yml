@@ -23,7 +23,10 @@ runs:
       yarn add @semantic-release/commit-analyzer@^9.0.2
       yarn add commit-analyzer-fail-on-no-release@^1.0.1
       yarn add conventional-changelog-conventionalcommits@^4.6.3
-
+  - name: download .releaserc
+    shell: bash
+    run: |
+      if [[ ! -f ".releaserc.json" ]] ; then curl -O https://raw.githubusercontent.com/SharecareBrasil/create-version-action/main/.releaserc.json ; fi
   - name: Release
     shell: bash
     id: create-release
