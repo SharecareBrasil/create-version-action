@@ -8,15 +8,23 @@ runs:
   using: "composite"
   steps:
   - uses: actions/setup-node@v2
-  - shell: bash
-    run: if [[ -f "yarn.lock" ]] ; then yarn install; fi
-  - shell: bash
-    run: if [[ -f "package-lock.json" ]] ; then npm install ; fi
+  - name: install dependencies
+    shell: bash
+    run: |
+      yarn add @semantic-release/changelog@^6.0.1
+      yarn add @semantic-release/error@^2.2.0
+      yarn add @semantic-release/git@^10.0.1
+      yarn add @semantic-release/release-notes-generator@^10.0.3
+      yarn add @semantic-release/github@^8.0.2
+      yarn add upgrade@^1.1.0
+      yarn add @semantic-release/commit-analyzer@^9.0.2
+      yarn add commit-analyzer-fail-on-no-release@^1.0.1
+
   - name: Release
     shell: bash
     id: create-release
     run: |
-      npx semantic-release
+      npmx semantic-release
       VERSION=$(cat package.json|jq -r .version)
       echo "::set-output name=version::$VERSION"
     env:
