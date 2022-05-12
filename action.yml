@@ -9,7 +9,6 @@ runs:
   steps:
   - uses: actions/setup-node@v3
     with:
-      cache: 'npm'
       node: 14
   - name: install dependencies
     shell: bash
