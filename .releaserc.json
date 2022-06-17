@@ -1,6 +1,7 @@
 {
   "branches": [
       "main",
+      {"name": "release", "prerelease": true},
       {"name": "develop", "prerelease": true}
   ],
   "plugins": [
@@ -9,7 +10,8 @@
       "releaseRules": [
         {"type": "feature", "release": "minor"},
         {"type": "chore", "release": "patch"},
-        {"type": "refactor", "release": "patch"}
+        {"type": "refactor", "release": "patch"},
+        {"type": "ci", "release": "patch"}
       ]
     }],
     ["@semantic-release/npm", {
