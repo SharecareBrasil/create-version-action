@@ -32,6 +32,7 @@ runs:
     run: |
       npx semantic-release
       VERSION=$(cat package.json|jq -r .version)
+      ls -lah
       echo "version=$VERSION" >> $GITHUB_OUTPUT
     env:
       GITHUB_TOKEN: ${{ github.token }}
