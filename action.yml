@@ -3,9 +3,6 @@ outputs:
   tag:
     description: "generate tag by semantic release"
     value: "v${{ steps.create-release.outputs.version }}"
-  changelog:
-    description: "changelog of release"
-    value: "${{ steps.create-release.outputs.changelog }}"
 runs:
   using: "composite"
   steps:
@@ -34,11 +31,11 @@ runs:
     run: |
       npx semantic-release
       VERSION=$(cat package.json|jq -r .version)
-      CHANGELOG=$(cat CHANGELOG.md)
-      CHANGELOG="${CHANGELOG//'%'/'%25'}"
-      CHANGELOG="${CHANGELOG//$'\n'/'%0A'}"
-      CHANGELOG="${CHANGELOG//$'\r'/'%0D'}"
       echo "version=$VERSION" >> $GITHUB_OUTPUT
-      echo "changelog=$CHANGELOG" >> $GITHUB_OUTPUT
     env:
       GITHUB_TOKEN: ${{ github.token }}
+  - name: Archive changelog
+    uses: actions/upload-artifact@v3
+    with:
+      name: "CHANGELOG"
+      path: "CHANGELOG.md"
