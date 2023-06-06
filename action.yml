@@ -13,6 +13,7 @@ runs:
   - name: install dependencies
     shell: bash
     run: |
+      rm yarn.lock
       yarn add semantic-release@19
       yarn add @semantic-release/changelog
       yarn add @semantic-release/error
