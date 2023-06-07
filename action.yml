@@ -15,14 +15,15 @@ runs:
     run: |
       rm yarn.lock
       yarn add semantic-release@19
-      yarn add @semantic-release/changelog
-      yarn add @semantic-release/error
-      yarn add @semantic-release/git
-      yarn add @semantic-release/release-notes-generator
-      yarn add @semantic-release/github
-      yarn add @semantic-release/commit-analyzer
-      yarn add commit-analyzer-fail-on-no-release
-      yarn add conventional-changelog-conventionalcommits
+      yarn add @semantic-release/changelog@^6.0.1
+      yarn add @semantic-release/error@^2.2.0
+      yarn add @semantic-release/git@^10.0.1
+      yarn add @semantic-release/release-notes-generator@^10.0.3
+      yarn add @semantic-release/github@^8.0.2
+      yarn add upgrade@^1.1.0
+      yarn add @semantic-release/commit-analyzer@^9.0.2
+      yarn add commit-analyzer-fail-on-no-release@^1.0.1
+      yarn add conventional-changelog-conventionalcommits@^4.6.3
   - name: download .releaserc
     shell: bash
     run: |
