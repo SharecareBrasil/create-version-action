@@ -20,7 +20,7 @@ runs:
       yarn add @semantic-release/git
       yarn add @semantic-release/release-notes-generator
       yarn add @semantic-release/github
-      yarn add @semantic-release/commit-analyze
+      yarn add @semantic-release/commit-analyzer
       yarn add commit-analyzer-fail-on-no-release
       yarn add conventional-changelog-conventionalcommits
   - name: download .releaserc
